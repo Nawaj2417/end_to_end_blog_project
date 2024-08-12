@@ -1,0 +1,36 @@
+{% extends "dashboard/dash_base.html" %}
+{% load static %}
+{% block body %}
+
+
+             
+                <!-- /.container-fluid -->
+                <div class="container mt-5">
+                    <h2 class="mb-4"> Blog posts </h2>
+                    <div class="card mb-3" style="max-width: 100%;">
+                        {% for post in post %}
+                        <div class="row no-gutters">
+                            <div class="col-md-2">
+                                <img src="{{post.image.url}}" class="card-img" alt="Blog Image">
+                            </div>
+                            <div class="col-md-10">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{post.title}}</h5>
+                                    {% comment %} <h2 class="card-text"><small class="text-muted">Blog</small></h2> {% endcomment %}
+                                    <p class="card-text"><small class="text-muted">Published: {{post.date}}</small></p>
+                                    <p class="card-text"><small class="text-muted">Author: {{post.author}}</small></p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            <i class="fas fa-eye"></i> {{post.views}} views | {{post.comments.count}} comments 
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of Main Content -->
+{% endblock body %}
